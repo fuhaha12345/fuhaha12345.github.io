@@ -17,7 +17,7 @@ enableRobotsTXT = true
   home = ['HTML', 'RSS', 'JSON']
 
 [params]
-  description = 'Solidity 漏洞分析、DeFi 安全研究与智能合约审计笔记。'
+  description = 'Solidity 漏洞分析、DeFi 安全研究笔记。'
   defaultTheme = 'auto'
   disableThemeToggle = false
   ShowReadingTime = true
@@ -33,7 +33,7 @@ enableRobotsTXT = true
 
 [params.homeInfoParams]
   Title = 'Web3 Security Research'
-  Content = '专注 Solidity 漏洞分析、DeFi 安全研究、智能合约审计笔记与 EVM 学习记录。'
+  Content = '专注 Solidity 漏洞分析、DeFi 安全研究与 EVM 学习记录。'
 
 [[params.socialIcons]]
   name = 'github'
