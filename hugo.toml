@@ -59,12 +59,6 @@ enableRobotsTXT = true
   name = 'DeFi 安全'
   url = '/categories/DeFi 安全/'
   weight = 20
-
-[[menu.main]]
-  identifier = 'audit'
-  name = '审计笔记'
-  url = '/categories/审计笔记/'
-  weight = 30
   
 [[menu.main]]
 identifier = 'study-notes'
