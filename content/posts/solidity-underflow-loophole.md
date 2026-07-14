@@ -12,6 +12,11 @@ categories:
 series:
   - Solidity 漏洞分析
 ---
+
+本文通过一个 Solidity 0.6.0 的示例，说明整数下溢漏洞为何会发生、如何被利用，以及如何修复。
+
+<!--more-->
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity 0.6.0;
