@@ -1,4 +1,13 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = 'https://fuhaha12345.github.io/'
+locale = 'zh-CN'
+defaultContentLanguage = 'zh-cn'
+title = 'Fuhaha 的智能合约安全笔记'
 theme = "PaperMod"
+
+[params]
+  description = 'Solidity 与智能合约安全学习笔记'
+  author = 'Fuhaha'
+  ShowReadingTime = true
+  ShowCodeCopyButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
