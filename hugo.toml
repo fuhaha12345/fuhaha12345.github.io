@@ -49,40 +49,45 @@ enableRobotsTXT = true
   keys = ['title', 'permalink', 'summary', 'content']
 
 [[menu.main]]
-  identifier = 'vulnerabilities'
-  name = '漏洞分析'
-  url = '/categories/漏洞分析/'
-  weight = 10
+identifier = 'solidity'
+name = '漏洞分析'
+url = '/posts/solidity-vulnerability/'
+weight = 10
+
 
 [[menu.main]]
-  identifier = 'defi'
-  name = 'DeFi 安全'
-  url = '/categories/DeFi 安全/'
-  weight = 20
-  
+identifier = 'defi'
+name = 'DeFi 安全'
+url = '/posts/defi-security/'
+weight = 20
+
+
 [[menu.main]]
-identifier = 'study-notes'
+identifier = 'study'
 name = '学习笔记'
 url = '/posts/study-notes/'
-weight = 35
+weight = 30
+
 
 [[menu.main]]
-  identifier = 'archives'
-  name = '归档'
-  url = '/archives/'
-  weight = 40
+identifier = 'archives'
+name = '归档'
+url = '/archives/'
+weight = 40
+
 
 [[menu.main]]
-  identifier = 'search'
-  name = '搜索'
-  url = '/search/'
-  weight = 50
+identifier = 'search'
+name = '搜索'
+url = '/search/'
+weight = 50
+
 
 [[menu.main]]
-  identifier = 'about'
-  name = '关于'
-  url = '/about/'
-  weight = 60
+identifier = 'about'
+name = '关于'
+url = '/about/'
+weight = 60
 
 [markup.highlight]
   noClasses = false
