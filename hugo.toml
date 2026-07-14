@@ -1,16 +1,92 @@
 baseURL = 'https://fuhaha12345.github.io/'
 locale = 'zh-CN'
 defaultContentLanguage = 'zh-cn'
-title = '智能合约安全笔记'
-theme = "PaperMod"
+title = 'Web3 Security Research'
+theme = 'PaperMod'
+enableRobotsTXT = true
+paginate = 10
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
 
 [params]
-  description = 'Solidity 与智能合约安全学习笔记'
+  description = 'Solidity 漏洞分析、DeFi 安全研究与智能合约审计笔记。'
+  defaultTheme = 'auto'
+  disableThemeToggle = false
   ShowReadingTime = true
-  ShowCodeCopyButtons = true
+  ShowShareButtons = true
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  mainSections = ['posts']
 
 [params.homeInfoParams]
-  Title = '智能合约安全笔记'
-  Content = '记录 Solidity、智能合约安全与漏洞分析的学习笔记。'
+  Title = 'Web3 Security Research'
+  Content = '专注 Solidity 漏洞分析、DeFi 安全研究、智能合约审计笔记与 EVM 学习记录。'
+
+[[params.socialIcons]]
+  name = 'github'
+  url = 'https://github.com/fuhaha12345'
+
+[params.fuseOpts]
+  isCaseSensitive = false
+  shouldSort = true
+  location = 0
+  distance = 1000
+  threshold = 0.4
+  minMatchCharLength = 0
+  keys = ['title', 'permalink', 'summary', 'content']
+
+[[menu.main]]
+  identifier = 'vulnerabilities'
+  name = '漏洞分析'
+  url = '/categories/漏洞分析/'
+  weight = 10
+
+[[menu.main]]
+  identifier = 'defi'
+  name = 'DeFi 安全'
+  url = '/categories/DeFi 安全/'
+  weight = 20
+
+[[menu.main]]
+  identifier = 'audit'
+  name = '审计笔记'
+  url = '/categories/审计笔记/'
+  weight = 30
+
+[[menu.main]]
+  identifier = 'archives'
+  name = '归档'
+  url = '/archives/'
+  weight = 40
+
+[[menu.main]]
+  identifier = 'search'
+  name = '搜索'
+  url = '/search/'
+  weight = 50
+
+[[menu.main]]
+  identifier = 'about'
+  name = '关于'
+  url = '/about/'
+  weight = 60
+
+[markup.highlight]
+  noClasses = false
+  lineNos = true
+  lineNumbersInTable = false
+  style = 'dracula'
+
+[markup.goldmark.renderer]
+  unsafe = true
