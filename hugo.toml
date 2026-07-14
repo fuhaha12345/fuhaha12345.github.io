@@ -65,6 +65,12 @@ enableRobotsTXT = true
   name = '审计笔记'
   url = '/categories/审计笔记/'
   weight = 30
+  
+[[menu.main]]
+identifier = 'study-notes'
+name = '学习笔记'
+url = '/posts/study-notes/'
+weight = 35
 
 [[menu.main]]
   identifier = 'archives'
