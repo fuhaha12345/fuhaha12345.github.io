@@ -1,11 +1,23 @@
 ---
-title: Oracle 价格操纵
+title: "Oracle 价格操纵"
+
 date: 2026-07-14
+
 draft: false
-description: 单一现货价格为何不适合清算与借贷，以及多源预言机和 TWAP 的设计要点。
-tags: [DeFi, Security, Oracle]
-categories: [DeFi 安全]
-series: [DeFi 安全研究]
+
+description: "分析 DeFi 中价格预言机失效导致的攻击，以及多源预言机和 TWAP 的设计要点。"
+
+categories:
+- DeFi安全
+
+tags:
+- defi
+- security
+- oracle
+- flashloan
+
+series:
+- DeFi安全研究
 ---
 
 预言机决定了链上协议如何把资产数量映射为价值。价格源被操纵时，借贷、清算和铸币的经济边界都会失效。
