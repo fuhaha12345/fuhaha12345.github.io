@@ -68,26 +68,31 @@ name = '学习笔记'
 url = '/posts/study-notes/'
 weight = 30
 
+[[menu.main]]
+identifier = 'Ethernaut'
+name = 'Ethernaut'
+url = '/posts/Ethernaut'
+weight = 40
 
 [[menu.main]]
 identifier = 'archives'
 name = '归档'
 url = '/archives/'
-weight = 40
+weight = 50
 
 
 [[menu.main]]
 identifier = 'search'
 name = '搜索'
 url = '/search/'
-weight = 50
+weight = 60
 
 
 [[menu.main]]
 identifier = 'about'
 name = '关于'
 url = '/about/'
-weight = 60
+weight = 70
 
 [markup.highlight]
   noClasses = false
