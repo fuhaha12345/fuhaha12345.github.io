@@ -14,7 +14,7 @@ series:
 
 ## Preservation
 
-这道题和https://learnblockchain.cn/article/4281中给的漏洞示例差不多，是一种类型的，思路都差不多
+这道题和 `https://learnblockchain.cn/article/4281` 中给的漏洞示例差不多，是一种类型的，思路都差不多
 
 ### 目标：
 
