@@ -69,7 +69,7 @@ url = '/posts/study-notes/'
 weight = 30
 
 [[menu.main]]
-identifier = 'Ethernaut'
+identifier = 'ethernaut'
 name = 'Ethernaut'
 url = '/posts/ethernaut'
 weight = 40
