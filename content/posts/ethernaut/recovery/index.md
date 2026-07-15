@@ -98,5 +98,3 @@ contract Attack is Script{
     }
 }
 ```
-
-![调用销毁函数完成 Recovery](img/recovery-step-4.png)
