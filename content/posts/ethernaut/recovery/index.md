@@ -1,11 +1,16 @@
 ---
-title:Recovery
-date:2026.7.15
-draft:false
-description:如何利用create来预测地址
-tags:[create，预测地址]
-categories:Ethernaut
-series:Ethernaut闯关记录
+title: "Recovery"
+date: 2026-07-15
+draft: false
+description: "如何利用 CREATE 预测合约地址"
+tags:
+  - Ethernaut
+  - CREATE
+  - 地址预测
+categories:
+  - Ethernaut
+series:
+  - Ethernaut 闯关记录
 ---
 
 ## Recovery
@@ -18,17 +23,17 @@ series:Ethernaut闯关记录
 
 首先我要先获取第二个合约`SimpleToken`的地址，利用cast send调用第一个合约的函数， 从而产生新实例
 
-![image-20260714094247655](../AppData/Roaming/Typora/typora-user-images/image-20260714094247655.png)
+![创建 SimpleToken 合约](img/recovery-step-1.png)
 
 调用完第一个合约后，去测试网找到第二个合约的地址
 
-![image-20260714095601025](../AppData/Roaming/Typora/typora-user-images/image-20260714095601025.png)
+![查询 SimpleToken 合约地址](img/recovery-step-2.png)
 
 emmm……,这思路错了，我如果调用第一个合约函数，产生的新实例中没有代币，也就代表我从其中获取不到Token
 
 我又获取了一个新实例，在测试网上找到了这笔交易，显然这其中是存在0.001以太坊交易的，然 后利用题目中的自毁函数取出即可
 
-![image-20260714102508560](../AppData/Roaming/Typora/typora-user-images/image-20260714102508560.png)
+![定位包含 ETH 的合约实例](img/recovery-step-3.png)
 
 ### 源码：
 
@@ -94,4 +99,4 @@ contract Attack is Script{
 }
 ```
 
-![image-20260714102239064](../AppData/Roaming/Typora/typora-user-images/image-20260714102239064.png)
+![调用销毁函数完成 Recovery](img/recovery-step-4.png)
