@@ -71,7 +71,7 @@ weight = 30
 [[menu.main]]
 identifier = 'Ethernaut'
 name = 'Ethernaut'
-url = '/posts/Ethernaut'
+url = '/posts/ethernaut'
 weight = 40
 
 [[menu.main]]
