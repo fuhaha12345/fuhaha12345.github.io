@@ -166,9 +166,9 @@ contract Mytoken is IERC20{
 }
 ```
 
-![image-20260717204950859](../AppData/Roaming/Typora/typora-user-images/image-20260717204950859.png)
+![image-20260719204950859](img/ERC20-1.png)
 
-![image-20260717204856379](../AppData/Roaming/Typora/typora-user-images/image-20260717204856379.png)
+![image-20260719204950859](img/ERC20-2.png)
 
 成功使账户余额变为100
 
