@@ -1,0 +1,145 @@
+{{- define "main" }}
+{{- $ethernaut := site.GetPage "/posts/ethernaut" }}
+{{- $vulnerabilities := site.GetPage "/posts/solidity-vulnerability" }}
+{{- $defi := site.GetPage "/posts/defi-security" }}
+{{- $study := site.GetPage "/posts/study-notes" }}
+{{- $ethernautEntries := union $ethernaut.RegularPages $ethernaut.Sections }}
+{{- $archiveRoots := slice "/posts/" "/posts/ethernaut/" "/posts/solidity-vulnerability/" "/posts/defi-security/" "/posts/study-notes/" }}
+{{- $allResearch := where site.Pages "Section" "posts" }}
+{{- $allResearch = where $allResearch "RelPermalink" "not in" $archiveRoots }}
+
+<section class="observatory-hero" aria-labelledby="observatory-title">
+  <div class="observatory-hero__content">
+    <div class="observatory-status">
+      <span class="observatory-status__dot" aria-hidden="true"></span>
+      RESEARCH NODE ONLINE
+      <span class="observatory-status__id">CN / 01</span>
+    </div>
+    <p class="observatory-kicker">WEB3 SECURITY · FIELD NOTES</p>
+    <h1 id="observatory-title">协议安全<br><span>观察站</span></h1>
+    <p class="observatory-lead">
+      从 EVM 语义到 DeFi 经济模型，记录漏洞如何产生、如何复现，以及如何被真正修复。
+    </p>
+    <div class="observatory-actions">
+      <a class="observatory-button observatory-button--primary" href="{{ $ethernaut.RelPermalink }}">
+        进入实战档案
+        <span aria-hidden="true">↗</span>
+      </a>
+      <a class="observatory-button observatory-button--ghost" href="{{ "/posts/solidity-vulnerability/" | relURL }}">
+        浏览漏洞分析
+      </a>
+    </div>
+  </div>
+
+  <div class="observatory-radar" aria-hidden="true">
+    <div class="observatory-radar__grid"></div>
+    <div class="observatory-radar__ring observatory-radar__ring--one"></div>
+    <div class="observatory-radar__ring observatory-radar__ring--two"></div>
+    <div class="observatory-radar__axis observatory-radar__axis--x"></div>
+    <div class="observatory-radar__axis observatory-radar__axis--y"></div>
+    <div class="observatory-radar__node observatory-radar__node--core">
+      <span>EVM</span>
+      <small>CORE</small>
+    </div>
+    <span class="observatory-radar__point observatory-radar__point--a"></span>
+    <span class="observatory-radar__point observatory-radar__point--b"></span>
+    <span class="observatory-radar__point observatory-radar__point--c"></span>
+    <div class="observatory-radar__label observatory-radar__label--a">CALL TRACE</div>
+    <div class="observatory-radar__label observatory-radar__label--b">STATE DIFF</div>
+    <div class="observatory-radar__label observatory-radar__label--c">VALUE FLOW</div>
+  </div>
+
+  <div class="observatory-metrics" aria-label="研究数据">
+    <div class="observatory-metric">
+      <span class="observatory-metric__value">{{ len $allResearch }}</span>
+      <span class="observatory-metric__label">研究条目<br>RESEARCH LOGS</span>
+    </div>
+    <div class="observatory-metric">
+      <span class="observatory-metric__value">{{ len $ethernautEntries }}</span>
+      <span class="observatory-metric__label">实战记录<br>FIELD CASES</span>
+    </div>
+    <div class="observatory-metric">
+      <span class="observatory-metric__value">04</span>
+      <span class="observatory-metric__label">研究方向<br>ACTIVE TRACKS</span>
+    </div>
+  </div>
+</section>
+
+<section class="research-tracks" aria-labelledby="tracks-title">
+  <header class="observatory-section-heading">
+    <div>
+      <span class="observatory-section-heading__index">01 / RESEARCH MAP</span>
+      <h2 id="tracks-title">研究坐标</h2>
+    </div>
+    <p>沿四条路径建立从原理、攻击到防御的完整知识图谱。</p>
+  </header>
+
+  <div class="research-track-grid">
+    {{- $tracks := slice
+      (dict "code" "A1" "page" $vulnerabilities "title" "漏洞分析" "en" "VULNERABILITY" "desc" "从语言语义与状态变化定位合约缺陷。" "tone" "orange")
+      (dict "code" "B2" "page" $defi "title" "DeFi 安全" "en" "PROTOCOL RISK" "desc" "分析预言机、流动性与经济模型风险。" "tone" "blue")
+      (dict "code" "C3" "page" $ethernaut "title" "合约安全实战" "en" "FIELD LAB" "desc" "记录靶场题目的推导过程与攻击代码。" "tone" "green")
+      (dict "code" "D4" "page" $study "title" "学习笔记" "en" "KNOWLEDGE BASE" "desc" "沉淀 EVM、Solidity 与工具链知识。" "tone" "slate")
+    }}
+    {{- range $tracks }}
+    {{- $trackPage := index . "page" }}
+    {{- $trackEntries := union $trackPage.RegularPages $trackPage.Sections }}
+    <a class="research-track research-track--{{ index . "tone" }}" href="{{ $trackPage.RelPermalink }}">
+      <span class="research-track__code">{{ index . "code" }}</span>
+      <span class="research-track__signal" aria-hidden="true"></span>
+      <div class="research-track__body">
+        <span class="research-track__eyebrow">{{ index . "en" }}</span>
+        <h3>{{ index . "title" }}</h3>
+        <p>{{ index . "desc" }}</p>
+      </div>
+      <footer>
+        <span>{{ len $trackEntries }} ENTRIES</span>
+        <span aria-hidden="true">↗</span>
+      </footer>
+    </a>
+    {{- end }}
+  </div>
+</section>
+
+<section class="latest-research" aria-labelledby="latest-title">
+  <header class="observatory-section-heading">
+    <div>
+      <span class="observatory-section-heading__index">02 / LATEST SIGNALS</span>
+      <h2 id="latest-title">最新研究</h2>
+    </div>
+    <a class="observatory-text-link" href="{{ "/archives/" | relURL }}">查看全部档案 <span aria-hidden="true">→</span></a>
+  </header>
+
+  <div class="latest-research-grid">
+    {{- $latest := where site.Pages.ByDate.Reverse "Section" "posts" }}
+    {{- $latest = where $latest "RelPermalink" "not in" $archiveRoots }}
+    {{- $latest = first 5 $latest }}
+    {{- range $index, $page := $latest }}
+    <article class="research-entry{{ if eq $index 0 }} research-entry--featured{{ end }}">
+      <div class="research-entry__topline">
+        <span class="research-entry__index">{{ printf "%02d" (add $index 1) }}</span>
+        <span class="research-entry__track">{{ with .Parent }}{{ .Title }}{{ else }}SECURITY NOTE{{ end }}</span>
+      </div>
+      <div class="research-entry__body">
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Summary | plainify | htmlUnescape | truncate 180 }}</p>
+      </div>
+      <footer class="research-entry__footer">
+        <span>{{ .Date.Format "2006.01.02" }}</span>
+        <span>{{ .ReadingTime }} MIN READ</span>
+        <span class="research-entry__arrow" aria-hidden="true">↗</span>
+      </footer>
+      <a class="entry-link" aria-label="阅读 {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
+    </article>
+    {{- end }}
+  </div>
+</section>
+
+<section class="observatory-manifesto">
+  <span class="observatory-manifesto__label">RESEARCH PRINCIPLE / 03</span>
+  <blockquote>
+    <p>不只记录“怎样通关”，更要理解一次状态变化为什么足以击穿整个协议。</p>
+  </blockquote>
+  <a href="{{ "/about/" | relURL }}">关于这座观察站 <span aria-hidden="true">→</span></a>
+</section>
+{{- end }}
