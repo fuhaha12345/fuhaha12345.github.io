@@ -1,0 +1,142 @@
+{{- define "main" }}
+{{- $pages := (union .RegularPages .Sections).ByDate.Reverse }}
+
+{{- if and (eq (len $pages) 0) .Content }}
+<article class="post-single observatory-legacy-article">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{- if .Description }}
+    <div class="post-description">{{ .Description }}</div>
+    {{- end }}
+    {{- if not (.Param "hideMeta") }}
+    <div class="post-meta">{{ partial "post_meta.html" . }}</div>
+    {{- end }}
+  </header>
+
+  {{- if (.Param "ShowToc") }}
+  {{- partial "toc.html" . }}
+  {{- end }}
+
+  <div class="post-content md-content">
+    {{- if not (.Param "disableAnchoredHeadings") }}
+    {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}{{ .Content }}{{ end }}
+  </div>
+
+  <footer class="post-footer">
+    {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+    <ul class="post-tags">
+      {{- range ($.GetTerms $tags) }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+    {{- if (.Param "ShowPostNavLinks") }}
+    {{- partial "post_nav_links.html" . }}
+    {{- end }}
+    {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
+    {{- partial "share_icons.html" . }}
+    {{- end }}
+  </footer>
+</article>
+{{- else }}
+{{- if not .IsHome | and .Title }}
+<header class="observatory-page-header">
+  <div class="observatory-page-header__meta">
+    <span>SECURITY ARCHIVE</span>
+    <span>{{ .Kind | upper }} / {{ now.Format "2006" }}</span>
+  </div>
+  {{- partial "breadcrumbs.html" . }}
+  <div class="observatory-page-header__title">
+    <h1>
+      {{ .Title }}
+      {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
+      {{- with .OutputFormats.Get "rss" }}
+      <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" height="21">
+          <path d="M4 11a9 9 0 0 1 9 9" />
+          <path d="M4 4a16 16 0 0 1 16 16" />
+          <circle cx="5" cy="19" r="1" />
+        </svg>
+      </a>
+      {{- end }}
+      {{- end }}
+    </h1>
+    {{- if .Description }}
+    <p>{{ .Description | markdownify }}</p>
+    {{- end }}
+  </div>
+  <div class="observatory-page-header__scan" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="observatory-section-intro md-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- $paginator := .Paginate $pages }}
+
+<div class="observatory-list-toolbar">
+  <div>
+    <span class="observatory-status__dot" aria-hidden="true"></span>
+    INDEX SYNCHRONIZED
+  </div>
+  <span>{{ len $pages }} ENTRIES · PAGE {{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
+</div>
+
+<div class="protocol-entry-grid">
+{{- range $index, $page := $paginator.Pages }}
+  <article class="protocol-entry">
+    <div class="protocol-entry__rail">
+      <span>{{ printf "%02d" (add $index 1) }}</span>
+      <i aria-hidden="true"></i>
+    </div>
+    <div class="protocol-entry__content">
+      <header>
+        <span class="protocol-entry__category">
+          {{- with .Parent }}{{ .Title }}{{ else }}SECURITY RESEARCH{{ end -}}
+        </span>
+        <h2>{{ .Title }}</h2>
+      </header>
+      {{- if (ne (.Param "hideSummary") true) }}
+      <p>{{ .Summary | plainify | htmlUnescape | truncate 190 }}</p>
+      {{- end }}
+      <footer>
+        {{- if not .Date.IsZero }}<span>{{ .Date.Format "2006.01.02" }}</span>{{- end }}
+        <span>{{ .ReadingTime }} MIN READ</span>
+        <span>{{ .WordCount }} WORDS</span>
+        <b aria-hidden="true">↗</b>
+      </footer>
+    </div>
+    <a class="entry-link" aria-label="阅读 {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
+  </article>
+{{- end }}
+</div>
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer observatory-pagination">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+      <span aria-hidden="true">←</span> 上一页
+    </a>
+    {{- end }}
+    <span class="observatory-pagination__count">{{ printf "%02d" $paginator.PageNumber }} / {{ printf "%02d" $paginator.TotalPages }}</span>
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+      下一页 <span aria-hidden="true">→</span>
+    </a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+
+{{- end }}
+{{- end }}
