@@ -1,6 +1,6 @@
 ---
-title: "Ethernaut 题解"
-description: "OpenZeppelin Ethernaut 闯关记录"
+title: "合约安全实战记录"
+description: "智能合约安全题目实战与解题笔记"
 ---
 
-记录智能合约安全题目分析。
+记录智能合约安全题目的分析思路、漏洞原理与实战代码。
