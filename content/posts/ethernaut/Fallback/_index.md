@@ -3,6 +3,7 @@ title: "Fallback"
 date: 2026-07-20
 draft: false
 description: "利用 receive 函数取得合约所有权"
+difficulty: "入门"
 tags:
   - Ethernaut
   - 访问控制

@@ -3,6 +3,7 @@ title: "Telephone"
 date: 2026-07-20
 draft: false
 description: "理解 tx.origin 与 msg.sender 的区别"
+difficulty: "入门"
 tags:
   - Ethernaut
   - tx.origin

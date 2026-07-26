@@ -3,6 +3,7 @@ title: "Wrapped Ether"
 date: 2026-07-24
 draft: false
 description: "利用重入漏洞耗尽 Wrapped Ether 合约资金"
+difficulty: "中等"
 tags:
   - Ethernaut
   - Reentrancy

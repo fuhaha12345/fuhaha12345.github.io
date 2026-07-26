@@ -3,6 +3,7 @@ title: "Gatekeeper_one"
 date: 2026-07-12
 draft: false
 description: "限制gas费，取字节规则"
+difficulty: "困难"
 tags:
   - Ethernaut
   - Gas费

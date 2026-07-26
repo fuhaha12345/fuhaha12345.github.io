@@ -109,6 +109,7 @@
       <p>{{ .Summary | plainify | htmlUnescape | truncate 190 }}</p>
       {{- end }}
       <footer>
+        {{- partial "difficulty_badge.html" . -}}
         {{- if not .Date.IsZero }}<span>{{ .Date.Format "2006.01.02" }}</span>{{- end }}
         <span>{{ .ReadingTime }} MIN READ</span>
         <span>{{ .WordCount }} WORDS</span>

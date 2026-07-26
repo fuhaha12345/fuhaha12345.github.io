@@ -3,6 +3,7 @@ title: "Shop"
 date: 2026-07-20
 draft: false
 description: "使shop的价格低于售价"
+difficulty: "简单"
 tags:
   - Ethernaut
 categories:
