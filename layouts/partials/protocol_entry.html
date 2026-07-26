@@ -1,0 +1,27 @@
+{{- $page := .page }}
+{{- $index := .index | default 0 }}
+<article class="protocol-entry">
+  <div class="protocol-entry__rail">
+    <span>{{ printf "%02d" (add $index 1) }}</span>
+    <i aria-hidden="true"></i>
+  </div>
+  <div class="protocol-entry__content">
+    <header>
+      <span class="protocol-entry__category">
+        {{- with $page.Parent }}{{ .Title }}{{ else }}SECURITY RESEARCH{{ end -}}
+      </span>
+      <h2>{{ $page.Title }}</h2>
+    </header>
+    {{- if (ne ($page.Param "hideSummary") true) }}
+    <p>{{ $page.Summary | plainify | htmlUnescape | truncate 190 }}</p>
+    {{- end }}
+    <footer>
+      {{- partial "difficulty_badge.html" $page -}}
+      {{- if not $page.Date.IsZero }}<span>{{ $page.Date.Format "2006.01.02" }}</span>{{- end }}
+      <span>{{ $page.ReadingTime }} MIN READ</span>
+      <span>{{ $page.WordCount }} WORDS</span>
+      <b aria-hidden="true">↗</b>
+    </footer>
+  </div>
+  <a class="entry-link" aria-label="阅读 {{ $page.Title | plainify }}" href="{{ $page.RelPermalink }}"></a>
+</article>
