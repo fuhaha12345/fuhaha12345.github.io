@@ -3,6 +3,7 @@ title: "Re-entrancy"
 date: 2026-07-20
 draft: false
 description: "利用重入漏洞提取合约余额"
+difficulty: "中等"
 tags:
   - Ethernaut
   - 重入

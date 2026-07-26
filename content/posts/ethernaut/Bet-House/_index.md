@@ -3,6 +3,7 @@ title: "Bet House"
 date: 2026-07-23
 draft: false
 description: "通过中间合约凑足 wrappedToken 并成为 bettor"
+difficulty: "困难"
 tags:
   - Ethernaut
   - ERC20

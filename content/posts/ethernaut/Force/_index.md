@@ -3,6 +3,7 @@ title: "Force"
 date: 2026-07-20
 draft: false
 description: "利用 selfdestruct 强制向合约转入 ETH"
+difficulty: "入门"
 tags:
   - Ethernaut
   - selfdestruct

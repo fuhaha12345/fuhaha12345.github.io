@@ -876,6 +876,41 @@ a {
   font-size: 9px;
 }
 
+.difficulty-badge {
+  display: inline-flex;
+  min-height: 22px;
+  padding: 0 8px;
+  align-items: center;
+  border: 1px solid currentColor;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  font-family: var(--mono-font);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.difficulty-badge--intro {
+  color: var(--obs-teal);
+}
+
+.difficulty-badge--simple {
+  color: var(--obs-blue);
+}
+
+.difficulty-badge--medium {
+  color: #d28a19;
+}
+
+.difficulty-badge--hard {
+  color: #e14f62;
+}
+
+.research-entry--featured .difficulty-badge--medium {
+  color: #ffbd59;
+}
+
 .research-entry--featured .research-entry__footer {
   border-color: #294052;
   color: #77909f;

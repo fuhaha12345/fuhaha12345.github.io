@@ -3,6 +3,7 @@ title: "Under the flow"
 date: 2026-07-26
 draft: false
 description: "利用 Solidity 0.7.0 整数下溢绕过 allowance 检查"
+difficulty: "简单"
 tags:
   - Ethernaut
   - ERC20

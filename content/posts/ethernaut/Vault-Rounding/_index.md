@@ -3,6 +3,7 @@ title: "Vault（份额舍入）"
 date: 2026-07-24
 draft: false
 description: "利用整数除法向下取整使 Vault 铸造 0 份额"
+difficulty: "中等"
 tags:
   - Ethernaut
   - Vault

@@ -3,6 +3,7 @@ title: "Naught coin"
 date: 2026-07-19
 draft: false
 description: "了解并会运用ERC20"
+difficulty: "简单"
 tags:
   - Ethernaut
   - ERC20

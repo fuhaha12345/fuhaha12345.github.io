@@ -1,0 +1,30 @@
+{{- $meta := slice }}
+
+{{- $difficulty := trim (printf "%s" (partial "difficulty_badge.html" .)) " \n\r\t" }}
+{{- if $difficulty }}
+{{- $meta = $meta | append $difficulty }}
+{{- end }}
+
+{{- if not .Date.IsZero -}}
+{{- $meta = $meta | append (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format (default ":date_long" site.Params.DateFormat))) }}
+{{- end }}
+
+{{- if (.Param "ShowReadingTime") -}}
+{{- $meta = $meta | append (printf "<span>%d MIN READ</span>" .ReadingTime) }}
+{{- end }}
+
+{{- if (.Param "ShowWordCount") -}}
+{{- $meta = $meta | append (printf "<span>%d WORDS</span>" .WordCount) }}
+{{- end }}
+
+{{- if not (.Param "hideAuthor") -}}
+{{- $author := trim (partial "author.html" .) " \n\r\t" }}
+{{- if $author }}
+{{- $meta = $meta | append (printf "<span>%s</span>" $author) }}
+{{- end }}
+{{- end }}
+
+{{- range $index, $item := $meta }}
+{{- if gt $index 0 }}&nbsp;·&nbsp;{{ end -}}
+{{- $item | safeHTML -}}
+{{- end -}}

@@ -3,6 +3,7 @@ title: "Gatekeeper_three"
 date: 2026-07-20
 draft: false
 description: "读取存储并组合调用通过守门人检查"
+difficulty: "困难"
 tags:
   - Ethernaut
   - Storage

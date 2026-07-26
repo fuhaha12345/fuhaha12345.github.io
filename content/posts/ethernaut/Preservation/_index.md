@@ -3,6 +3,7 @@ title: "Preservation"
 date: 2026-07-15
 draft: false
 description: "利用delegatecall漏洞夺权"
+difficulty: "中等"
 tags:
   - Ethernaut
   - delegatecall

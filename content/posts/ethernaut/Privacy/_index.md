@@ -3,6 +3,7 @@ title: "Privacy"
 date: 2026-07-20
 draft: false
 description: "读取链上存储并截取 bytes16 密钥"
+difficulty: "中等"
 tags:
   - Ethernaut
   - Storage

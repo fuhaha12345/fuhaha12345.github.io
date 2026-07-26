@@ -3,6 +3,7 @@ title: "King"
 date: 2026-07-20
 draft: false
 description: "利用拒绝服务阻止王位转移"
+difficulty: "简单"
 tags:
   - Ethernaut
   - 拒绝服务

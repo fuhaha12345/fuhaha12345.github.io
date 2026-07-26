@@ -3,6 +3,7 @@ title: "Token"
 date: 2026-07-20
 draft: false
 description: "利用整数下溢增加代币余额"
+difficulty: "简单"
 tags:
   - Ethernaut
   - 整数下溢
