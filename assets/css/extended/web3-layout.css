@@ -876,6 +876,41 @@ a {
   font-size: 9px;
 }
 
+.difficulty-badge {
+  display: inline-flex;
+  min-height: 22px;
+  padding: 0 8px;
+  align-items: center;
+  border: 1px solid currentColor;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  font-family: var(--mono-font);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.difficulty-badge--intro {
+  color: var(--obs-teal);
+}
+
+.difficulty-badge--simple {
+  color: var(--obs-blue);
+}
+
+.difficulty-badge--medium {
+  color: #d28a19;
+}
+
+.difficulty-badge--hard {
+  color: #e14f62;
+}
+
+.research-entry--featured .difficulty-badge--medium {
+  color: #ffbd59;
+}
+
 .research-entry--featured .research-entry__footer {
   border-color: #294052;
   color: #77909f;
@@ -1040,6 +1075,48 @@ a {
 
 .protocol-entry-grid {
   border-top: 1px solid var(--obs-line);
+}
+
+.difficulty-group-stack {
+  display: grid;
+  gap: 34px;
+}
+
+.difficulty-group__header {
+  display: flex;
+  min-height: 74px;
+  padding: 0 18px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--obs-line);
+  border-bottom: 0;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--obs-surface) 92%, transparent), transparent),
+    color-mix(in srgb, var(--obs-surface) 80%, transparent);
+}
+
+.difficulty-group__header > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.difficulty-group__header h2 {
+  margin: 0;
+  color: var(--obs-ink);
+  font-size: 22px;
+  letter-spacing: 0;
+}
+
+.difficulty-group__header > span {
+  color: var(--obs-muted);
+  font-family: var(--mono-font);
+  font-size: 9px;
+  letter-spacing: 0.07em;
+}
+
+.difficulty-group .protocol-entry-grid {
+  border-top: 0;
 }
 
 .protocol-entry {
@@ -1796,6 +1873,19 @@ a {
     flex-direction: column;
     justify-content: center;
     gap: 7px;
+  }
+
+  .difficulty-group__header {
+    min-height: auto;
+    padding: 16px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .difficulty-group__header > div {
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .protocol-entry {

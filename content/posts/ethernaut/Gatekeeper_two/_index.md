@@ -3,6 +3,7 @@ title: "Gatekeeper_two"
 date: 2026-07-20
 draft: false
 description: "利用构造阶段代码长度与按位异或通过检查"
+difficulty: "困难"
 tags:
   - Ethernaut
   - EVM

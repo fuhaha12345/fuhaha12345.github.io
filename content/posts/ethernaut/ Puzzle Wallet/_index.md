@@ -3,6 +3,7 @@ title: "Puzzle Wallet"
 date: 2026-07-20
 draft: false
 description: "成功获取合约的admin权限"
+difficulty: "困难"
 tags:
   - Ethernaut
   - delegatecall

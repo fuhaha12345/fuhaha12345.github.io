@@ -1,0 +1,11 @@
+{{- with .Params.difficulty -}}
+{{- $tone := "medium" -}}
+{{- if eq . "入门" -}}
+{{- $tone = "intro" -}}
+{{- else if eq . "简单" -}}
+{{- $tone = "simple" -}}
+{{- else if eq . "困难" -}}
+{{- $tone = "hard" -}}
+{{- end -}}
+<span class="difficulty-badge difficulty-badge--{{ $tone }}" title="题目难度：{{ . }}">难度 · {{ . }}</span>
+{{- end -}}

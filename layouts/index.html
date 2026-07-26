@@ -134,6 +134,7 @@
         <p>{{ .Summary | plainify | htmlUnescape | truncate 180 }}</p>
       </div>
       <footer class="research-entry__footer">
+        {{- partial "difficulty_badge.html" . -}}
         <span>{{ .Date.Format "2006.01.02" }}</span>
         <span>{{ .ReadingTime }} MIN READ</span>
         <span class="research-entry__arrow" aria-hidden="true">↗</span>

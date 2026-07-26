@@ -3,6 +3,7 @@ title: "DEX"
 date: 2026-07-22
 draft: false
 description: "利用错误的兑换定价抽干 DEX 代币池"
+difficulty: "中等"
 tags:
   - Ethernaut
   - DEX

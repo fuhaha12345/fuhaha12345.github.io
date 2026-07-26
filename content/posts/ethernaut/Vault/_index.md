@@ -3,6 +3,7 @@ title: "Vault"
 date: 2026-07-20
 draft: false
 description: "读取链上私有变量解锁合约"
+difficulty: "入门"
 tags:
   - Ethernaut
   - Storage

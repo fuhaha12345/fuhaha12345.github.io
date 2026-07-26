@@ -3,6 +3,7 @@ title: "Elevator"
 date: 2026-07-20
 draft: false
 description: "通过可变返回值到达电梯顶层"
+difficulty: "简单"
 tags:
   - Ethernaut
   - 接口调用

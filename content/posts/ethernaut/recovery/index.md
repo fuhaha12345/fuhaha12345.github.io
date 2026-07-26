@@ -3,6 +3,7 @@ title: "Recovery"
 date: 2026-07-15
 draft: false
 description: "如何利用 CREATE 预测合约地址"
+difficulty: "中等"
 tags:
   - Ethernaut
   - CREATE
