@@ -1,5 +1,6 @@
 {{- define "main" }}
 {{- $pages := (union .RegularPages .Sections).ByDate.Reverse }}
+{{- $isEthernautSection := eq .RelPermalink "/posts/ethernaut/" }}
 
 {{- if and (eq (len $pages) 0) .Content }}
 <article class="post-single observatory-legacy-article">
@@ -81,43 +82,56 @@
 </div>
 {{- end }}
 
-{{- $paginator := .Paginate $pages }}
-
 <div class="observatory-list-toolbar">
   <div>
     <span class="observatory-status__dot" aria-hidden="true"></span>
     INDEX SYNCHRONIZED
   </div>
+  {{- if $isEthernautSection }}
+  <span>{{ len $pages }} ENTRIES · GROUPED BY DIFFICULTY</span>
+  {{- else }}
+  {{- $paginator := .Paginate $pages }}
   <span>{{ len $pages }} ENTRIES · PAGE {{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
+  {{- end }}
 </div>
 
+{{- if $isEthernautSection }}
+{{- $difficultyOrder := slice "入门" "简单" "中等" "困难" }}
+<div class="difficulty-group-stack">
+{{- range $difficultyOrder }}
+  {{- $level := . }}
+  {{- $groupPages := where $pages "Params.difficulty" $level }}
+  {{- if gt (len $groupPages) 0 }}
+  {{- $tone := "medium" }}
+  {{- if eq $level "入门" }}
+    {{- $tone = "intro" }}
+  {{- else if eq $level "简单" }}
+    {{- $tone = "simple" }}
+  {{- else if eq $level "困难" }}
+    {{- $tone = "hard" }}
+  {{- end }}
+  <section class="difficulty-group difficulty-group--{{ $tone }}">
+    <header class="difficulty-group__header">
+      <div>
+        <span class="difficulty-badge difficulty-badge--{{ $tone }}">难度 · {{ $level }}</span>
+        <h2>{{ $level }}题目</h2>
+      </div>
+      <span>{{ len $groupPages }} ENTRIES</span>
+    </header>
+    <div class="protocol-entry-grid">
+      {{- range $index, $page := $groupPages.ByDate.Reverse }}
+      {{- partial "protocol_entry.html" (dict "page" $page "index" $index) }}
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+{{- end }}
+</div>
+{{- else }}
+{{- $paginator := .Paginate $pages }}
 <div class="protocol-entry-grid">
 {{- range $index, $page := $paginator.Pages }}
-  <article class="protocol-entry">
-    <div class="protocol-entry__rail">
-      <span>{{ printf "%02d" (add $index 1) }}</span>
-      <i aria-hidden="true"></i>
-    </div>
-    <div class="protocol-entry__content">
-      <header>
-        <span class="protocol-entry__category">
-          {{- with .Parent }}{{ .Title }}{{ else }}SECURITY RESEARCH{{ end -}}
-        </span>
-        <h2>{{ .Title }}</h2>
-      </header>
-      {{- if (ne (.Param "hideSummary") true) }}
-      <p>{{ .Summary | plainify | htmlUnescape | truncate 190 }}</p>
-      {{- end }}
-      <footer>
-        {{- partial "difficulty_badge.html" . -}}
-        {{- if not .Date.IsZero }}<span>{{ .Date.Format "2006.01.02" }}</span>{{- end }}
-        <span>{{ .ReadingTime }} MIN READ</span>
-        <span>{{ .WordCount }} WORDS</span>
-        <b aria-hidden="true">↗</b>
-      </footer>
-    </div>
-    <a class="entry-link" aria-label="阅读 {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
-  </article>
+  {{- partial "protocol_entry.html" (dict "page" $page "index" $index) }}
 {{- end }}
 </div>
 
@@ -137,6 +151,7 @@
     {{- end }}
   </nav>
 </footer>
+{{- end }}
 {{- end }}
 
 {{- end }}
