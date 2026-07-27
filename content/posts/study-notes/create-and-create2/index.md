@@ -5,9 +5,6 @@ publishDate: 2026-07-27
 draft: false
 ---
 
-8004 gas优化
-creation code
-
 ## Create and Create2
 
 create用法：
@@ -106,7 +103,7 @@ computeCreate2Address(
     bytes32 initCodeHash,
     address deployer
 )
-//如果顺序改变，预测出的地址将b
+//如果顺序改变，预测出的地址将改变
 ```
 
 合约内部逻辑正确即可，主要目的是为了查看这个合约的地址
